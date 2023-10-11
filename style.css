@@ -1,58 +1,301 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-  
-  <title>Frontend Mentor | Results summary component</title>
+  * {
+    margin: 0;
+  }
 
-</head>
-<body>
+  html, body {
+    height: 100%;
+  }
 
-  <main>
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    <div class="result">
-      <p class="your-result">Your Result</p>
-          <div class="total__mark">
-            <p class="marks-obtained">76</p>
-            <p class="out-of">of 100</p>
-          </div>
-          <h2 class="feedback">Great</h2>
-          <p class="feedback__summary">You scored higher than 65% of the people who have taken these tests.</p>
-    </div>
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
 
-    <div class="summary">
-      <h3 class="summary__text">Summary</h3>
+  input, button, textarea, select {
+    font: inherit;
+  }
 
-      <div class="summary__reaction" data-icon="reaction-icon">
-        <h3 class="reaction">Reaction</h3>
-        <h3 class="reaction__marks"><span class="reaction__marks-obtained">80</span><span class="out-of-100"> / 100</span></h3>
-      </div>
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
 
-      <div class="summary__memory" data-icon="memory-icon">
-        <h3 class="memory">Memory</h3>
-        <h3 class="memory__marks"><span class="memory__marks-obtained">92</span><span class="out-of-100"> / 100</span></h3>
-      </div>
+:root{
+    --clr-light-red: hsl(0, 100%, 67%);
+    --clr-more-light-red: hsl(0, 100%, 95%);
+    --clr-oragey-yellow: hsl(39, 100%, 56%);
+    --clr-light-oragey-yellow: hsl(39, 100%, 92%);
+    --clr-green-teal: hsl(166, 100%, 37%);
+    --clr-light-green-teal: hsl(166, 100%, 90%);
+    --clr-cobalt-blue: hsl(234, 47%, 40%);
+    --clr-light-cobalt-blue: hsl(234, 47%, 78%);
 
-      <div class="summary__verbal" data-icon="verbal-icon">
-        <h3 class="verbal">Verbal</h3>
-        <h3 class="verbal__marks"><span class="verbal__marks-obtained">61</span><span class="out-of-100"> / 100</span></h3>
-      </div>
+    --clr-light-stale-blue: hsl(252, 100%, 67%);
+    --clr-light-royal-blue: hsl(241, 81%, 54%);
 
-      <div class="summary__visual" data-icon="visual-icon">
-        <h3 class="visual">Visual</h3>
-        <h3 class="visual__marks"><span class="visual__marks-obtained">72</span><span class="out-of-100"> / 100</span></h3>
-      </div>
+    --clr-violet-blue: rgb(50, 7, 167);
+    --clr-persian-blue: hsla(241, 72%, 46%, 0);
 
-      <button type="button" class="button">Continue</button>
-    
-    </div>
-    
-  </main>
-  
+    --clr-neutral-white: hsl(0, 0%, 100%);
+    --clr-neutral-pale-blue: hsl(221, 100%, 96%);
+    --clr-neutral-light-lavender: hsl(241, 100%, 89%);
+    --clr-neutral-dark-grey-blue: hsl(224, 30%, 27%);
+    --clr-neutral-light-grey-blue: hsl(224, 27%, 56%);
 
-</body>
-</html>
+    --fs: 1.125rem;
+
+    --ff-hanken: 'Hanken Grotesk', sans-serif;
+}
+
+
+body{
+    font-family: var(--ff-hanken);
+    font-size: var(--fs);
+    background-color: var(--clr-neutral-white);
+    display: grid;
+    place-content: center;
+    margin: 1rem;
+}
+
+@media (min-width: 600px){
+  main{
+    display: grid;
+    grid-template-columns: 1fr 1fr
+  }
+  .result{
+    min-width: 350px;
+    border-radius: 1rem;
+  }
+  .summary{
+    min-width: 350px;
+  }
+}
+
+.result{
+    background: linear-gradient(var(--clr-light-stale-blue),var(--clr-light-royal-blue));
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    overflow: hidden;
+}
+
+.your-result{
+  color: var(--clr-neutral-light-lavender);
+  font-weight: 500;
+  padding: 1.5rem;
+}
+
+
+
+.total__mark{
+  background: linear-gradient(var(--clr-violet-blue),var(--clr-persian-blue));
+  width: 140px;
+  height: 140px;
+  border-radius: 140px;
+  text-align: center;
+  overflow: hidden;
+  vertical-align:middle;
+}
+
+.marks-obtained{
+  font-size: 3.75rem;
+  font-weight: 600;
+  color: var(--clr-neutral-white);
+  padding-top: 0.9125rem;
+}
+
+.out-of{
+  color: var(--clr-neutral-light-lavender);
+  font-weight: 400;
+  font-size: 0.9125rem;
+  margin-bottom: 20px;
+}
+
+.feedback{
+  color: var(--clr-neutral-white);
+  padding: 1rem;
+}
+
+.feedback__summary{
+  color: var(--clr-neutral-light-lavender);
+  text-align: center;
+  width:250px;
+  font-size: 0.9125rem;
+  font-weight: 400;
+  padding-bottom: 1rem;
+}
+
+.summary{
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.summary__text{
+  color: var(--clr-neutral-dark-grey-blue);
+  font-weight: 900px;
+}
+
+.summary__reaction{
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: space-around;
+
+  background-color: var(--clr-more-light-red);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+
+}
+
+.reaction{
+  color: var(--clr-light-red);
+}
+
+.summary__reaction[data-icon="reaction-icon"]::before{
+    content: "";
+    background-image: url(./assets/images/icon-reaction.svg);
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.reaction__marks{
+  padding-left: 5rem;
+}
+
+.reaction__marks-obtained{
+  color: var(--clr-neutral-dark-grey-blue);
+}
+
+.out-of-100{
+  color: var(--clr-neutral-light-grey-blue);
+}
+
+
+.summary__memory{
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: space-around;
+
+  background-color: var(--clr-light-oragey-yellow);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+
+}
+
+.memory{
+  color: var(--clr-oragey-yellow);
+}
+
+.summary__memory[data-icon="memory-icon"]::before{
+  content: "";
+  background-image: url(./assets/images/icon-memory.svg);
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.memory__marks{
+  padding-left: 5rem;
+}
+
+.memory__marks-obtained{
+  color: var(--clr-neutral-dark-grey-blue);
+}
+
+
+
+
+.summary__verbal{
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: space-around;
+
+  background-color: var(--clr-light-green-teal);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+
+}
+
+.verbal{
+  color: var(--clr-green-teal);
+}
+
+.summary__verbal[data-icon="verbal-icon"]::before{
+  content: "";
+  background-image: url(./assets/images/icon-verbal.svg);
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.verbal__marks{
+  padding-left: 6rem;
+}
+
+.verbal__marks-obtained{
+  color: var(--clr-neutral-dark-grey-blue);
+}
+
+
+
+
+.summary__visual{
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: space-around;
+
+  background-color: var(--clr-light-cobalt-blue);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+
+}
+
+.visual{
+  color: var(--clr-cobalt-blue);
+}
+
+.summary__visual[data-icon="visual-icon"]::before{
+  content: "";
+  background-image: url(./assets/images/icon-visual.svg);
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.visual__marks{
+  padding-left: 5rem;
+}
+
+.visual__marks-obtained{
+  color: var(--clr-neutral-dark-grey-blue);
+}
+
+
+
+.button{
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+
+  border: 0;
+  border-radius: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--clr-neutral-dark-grey-blue);
+  color: var(--clr-neutral-white);
+}
